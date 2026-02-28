@@ -1,0 +1,40 @@
+# Core Dependencies
+litellm>=1.0.0
+asyncio
+aiohttp
+tenacity>=8.0.0
+
+# Data Processing
+pandas>=1.5.0
+numpy>=1.22.0
+jsonlines
+
+# Progress & Utilities
+tqdm
+python-dotenv
+pathlib
+
+# Configuration
+pyyaml>=6.0
+
+# AWS SDK (for Bedrock)
+boto3>=1.26.0
+botocore>=1.29.0
+
+# Google Cloud (for Vertex AI)
+google-cloud-aiplatform>=1.38.0
+
+# OpenAI (optional - litellm handles this, but explicit for clarity)
+openai>=1.0.0
+
+# Anthropic SDK (for orchestrator)
+anthropic>=0.83.0
+
+# Web Framework
+fastapi
+uvicorn
+gunicorn>=22.0.0
+
+# Database
+sqlalchemy>=1.4.0
+psycopg2-binary>=2.9.0

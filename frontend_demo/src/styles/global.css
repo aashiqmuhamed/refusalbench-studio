@@ -1,0 +1,173 @@
+:root {
+  color-scheme: light;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--color-page-bg);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+
+  /* ── Page / Background ─────────────────────────── */
+  --color-page-bg: #f6f0e9;
+  --color-page-bg-alt: #f0e8df;
+  --color-page-gradient: linear-gradient(135deg, #f6f0e9 0%, #f0e8df 50%, #f6f0e9 100%);
+
+  /* ── Surfaces ──────────────────────────────────── */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f7f1ea;
+  --color-surface-alt: #f0e8df;
+
+  /* ── Text ──────────────────────────────────────── */
+  --color-text-primary: #0A3235;
+  --color-text-secondary: #3D6B6E;
+  --color-text-tertiary: #6B9B9E;
+  --color-text-heading: #0A3235;
+
+  /* ── Accent ────────────────────────────────────── */
+  --color-accent: #0A8E62;
+  --color-accent-hover: #07734F;
+  --color-accent-light: rgba(10, 142, 98, 0.12);
+  --color-accent-secondary: #ef529b;
+  --color-accent-secondary-light: rgba(239, 82, 155, 0.12);
+
+  /* ── Borders & Shadows ─────────────────────────── */
+  --color-border: rgba(10, 50, 53, 0.1);
+  --color-border-strong: rgba(10, 50, 53, 0.2);
+  --color-shadow: rgba(10, 50, 53, 0.08);
+  --color-shadow-heavy: rgba(10, 50, 53, 0.15);
+
+  /* ── Buttons ───────────────────────────────────── */
+  --color-btn-primary-bg: #0A8E62;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-shadow: rgba(10, 142, 98, 0.25);
+  --color-btn-primary-hover-shadow: rgba(10, 142, 98, 0.4);
+  --color-btn-secondary-bg: transparent;
+  --color-btn-secondary-text: #3D6B6E;
+  --color-btn-secondary-border: rgba(10, 50, 53, 0.2);
+  --color-btn-secondary-hover-bg: rgba(10, 142, 98, 0.08);
+
+  /* ── Forms ─────────────────────────────────────── */
+  --color-form-bg: #ffffff;
+  --color-form-border: rgba(10, 50, 53, 0.15);
+  --color-form-focus-border: rgba(10, 142, 98, 0.6);
+  --color-form-focus-ring: rgba(10, 142, 98, 0.2);
+  --color-form-error-border: rgba(194, 59, 59, 0.5);
+
+  /* ── Status: Success ───────────────────────────── */
+  --color-success: #0A8E62;
+  --color-success-bg: rgba(10, 142, 98, 0.1);
+  --color-success-bg-strong: rgba(10, 142, 98, 0.15);
+  --color-success-border: rgba(10, 142, 98, 0.3);
+  --color-success-gradient: linear-gradient(90deg, #0A8E62, #12B07A);
+
+  /* ── Status: Error ─────────────────────────────── */
+  --color-error: #C23B3B;
+  --color-error-bg: rgba(194, 59, 59, 0.1);
+  --color-error-bg-strong: rgba(194, 59, 59, 0.15);
+  --color-error-border: rgba(194, 59, 59, 0.3);
+  --color-error-gradient: linear-gradient(135deg, #C23B3B, #E06060);
+
+  /* ── Status: Warning ───────────────────────────── */
+  --color-warning: #C47E0A;
+  --color-warning-bg: rgba(196, 126, 10, 0.1);
+  --color-warning-bg-strong: rgba(196, 126, 10, 0.15);
+  --color-warning-border: rgba(196, 126, 10, 0.3);
+  --color-warning-gradient: linear-gradient(90deg, #C47E0A, #E0A030);
+
+  /* ── Status: Purple/Refusal ────────────────────── */
+  --color-purple: #A84B8E;
+  --color-purple-bg: rgba(168, 75, 142, 0.1);
+  --color-purple-bg-strong: rgba(168, 75, 142, 0.15);
+  --color-purple-border: rgba(168, 75, 142, 0.3);
+
+  /* ── Status: Info/Blue ─────────────────────────── */
+  --color-info: #1A7A8A;
+  --color-info-bg: rgba(26, 122, 138, 0.1);
+  --color-info-bg-strong: rgba(26, 122, 138, 0.15);
+  --color-info-border: rgba(26, 122, 138, 0.3);
+
+  /* ── Diff text ─────────────────────────────────── */
+  --color-diff-added-bg: rgba(10, 142, 98, 0.15);
+  --color-diff-added-text: #0A8E62;
+  --color-diff-removed-bg: rgba(194, 59, 59, 0.15);
+  --color-diff-removed-text: #C23B3B;
+
+  /* ── Chat bubbles ──────────────────────────────── */
+  --color-chat-user-bg: rgba(10, 142, 98, 0.06);
+  --color-chat-user-border: rgba(10, 142, 98, 0.25);
+  --color-chat-assistant-bg: rgba(239, 82, 155, 0.06);
+  --color-chat-assistant-border: rgba(239, 82, 155, 0.25);
+  --color-chat-workflow-bg: rgba(196, 126, 10, 0.06);
+  --color-chat-workflow-border: rgba(196, 126, 10, 0.25);
+  --color-chat-error-bg: rgba(194, 59, 59, 0.06);
+  --color-chat-error-border: rgba(194, 59, 59, 0.3);
+  --color-chat-decision-bg: rgba(10, 142, 98, 0.08);
+  --color-chat-decision-border: rgba(10, 142, 98, 0.35);
+
+  /* ── Modal overlay ─────────────────────────────── */
+  --color-modal-overlay: rgba(10, 50, 53, 0.3);
+
+  /* ── Tabs ──────────────────────────────────────── */
+  --color-tab-active-bg: rgba(10, 142, 98, 0.12);
+  --color-tab-active-text: #0A8E62;
+  --color-tab-active-border: rgba(10, 142, 98, 0.35);
+  --color-tab-badge-bg: rgba(10, 142, 98, 0.18);
+
+  /* ── Highlights ────────────────────────────────── */
+  --color-highlight-bg: rgba(196, 126, 10, 0.2);
+  --color-highlight-text: #8B5A00;
+
+  /* ── Verifier Card Colors ──────────────────────── */
+  --color-card-teal-bg: rgba(10, 142, 98, 0.06);
+  --color-card-teal-border: rgba(10, 142, 98, 0.25);
+  --color-card-teal-dot: #0A8E62;
+  --color-card-pink-bg: rgba(239, 82, 155, 0.06);
+  --color-card-pink-border: rgba(239, 82, 155, 0.25);
+  --color-card-pink-dot: #ef529b;
+  --color-card-accent-bg: rgba(26, 122, 138, 0.06);
+  --color-card-accent-border: rgba(26, 122, 138, 0.25);
+  --color-card-accent-dot: #1A7A8A;
+  --color-card-green-bg: rgba(10, 142, 98, 0.06);
+  --color-card-green-border: rgba(10, 142, 98, 0.25);
+  --color-card-green-dot: #0A8E62;
+  --color-card-amber-bg: rgba(196, 126, 10, 0.06);
+  --color-card-amber-border: rgba(196, 126, 10, 0.25);
+  --color-card-amber-dot: #C47E0A;
+  --color-card-gray-bg: rgba(10, 50, 53, 0.04);
+  --color-card-gray-border: rgba(10, 50, 53, 0.15);
+  --color-card-gray-dot: #6B9B9E;
+
+  /* ── Pending/Neutral ───────────────────────────── */
+  --color-pending: #6B9B9E;
+  --color-pending-bg: rgba(107, 155, 158, 0.1);
+  --color-pending-border: rgba(107, 155, 158, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--color-page-gradient);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+textarea, select, input {
+  font: inherit;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}

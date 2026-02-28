@@ -1,0 +1,150 @@
+# Universal Configuration for RefusalBench Generator and Verifiers
+# Supports multiple LLM providers: bedrock, vertex_ai, openai, vllm
+#
+# Note: Some models (e.g., Claude on Bedrock) don't allow both temperature and top_p.
+# By default, only temperature is used. To use top_p instead, set 'use_top_p: true'.
+#
+# vLLM Support:
+# For models served through vLLM with OpenAI-compatible API, use provider: "vllm"
+# and specify the api_base URL (e.g., "http://localhost:8000/v1")
+# Example:
+#   provider: "vllm"
+#   model_id: "meta-llama/Llama-2-7b-chat-hf"
+#   api_base: "http://localhost:8000/v1"
+#   api_key: "EMPTY"  # vLLM often uses "EMPTY" or can be omitted
+
+# Generator Configuration
+generator:
+  provider: "bedrock"  # Options: bedrock, vertex_ai, openai, vllm
+  model_id: "us.anthropic.claude-opus-4-6-v1"
+  display_name: "Claude Opus 4.6"
+  temperature: 0.1
+  max_tokens: 2000
+  # use_top_p: true  # Uncomment to use top_p instead of temperature
+  # top_p: 0.99
+  # Provider-specific settings
+  aws_region: "us-east-1"
+  # For bedrock models that need converse API, set use_converse: true
+  use_converse: false
+  # For vLLM provider, specify custom endpoint:
+  # api_base: "http://localhost:8000/v1"
+  # api_key: "EMPTY"
+
+# Verifier Configurations (4 verifiers)
+verifiers:
+  - name: "verifier_a"
+    provider: "bedrock"
+    model_id: "us.anthropic.claude-opus-4-5-20251101-v1:0"
+    display_name: "Claude Opus 4.5"
+    temperature: 0.1
+    max_tokens: 2000
+    use_converse: false
+
+  - name: "verifier_b"
+    provider: "bedrock"
+    model_id: "deepseek.v3.2"
+    display_name: "DeepSeek V3.2"
+    max_tokens: 2000
+    use_converse: true
+
+  - name: "verifier_c"
+    provider: "openai"
+    model_id: "gpt-5.1"
+    display_name: "GPT-5.1"
+    temperature: 1.0
+    max_tokens: 2000
+
+  - name: "verifier_d"
+    provider: "bedrock"
+    model_id: "amazon.nova-pro-v1:0"
+    display_name: "Nova Pro"
+    temperature: 0.1
+    max_tokens: 2000
+    use_converse: true
+
+# Processing settings
+processing:
+  batch_size: 10
+  max_concurrent: 20
+
+
+# Evaluator Configuration (model being evaluated)
+# This is the model you want to evaluate on RefusalBench
+# vLLM evaluator (commented out):
+#  provider: "vllm"
+#  model_id: "meta-llama/Llama-3.2-1B-Instruct"
+#  display_name: "Llama 3.2 1B Instruct (vLLM)"
+#  api_base: "http://52.71.147.131:8000/v1"
+#  api_key: "EMPTY"
+#  temperature: 0.7
+#  max_tokens: 2000
+evaluator:
+  provider: "openai"
+  model_id: "gpt-5.2"
+  display_name: "GPT-5.2"
+  temperature: 0.1
+  max_tokens: 2000
+
+# User Study Evaluators (3 models for side-by-side comparison)
+# Display names are intentionally blinded (Model A/B/C) to avoid bias during user studies.
+# All three share the same evaluation_engine (judge) defined below.
+evaluators:
+  - name: "evaluator_a"
+    display_name: "Model A"
+    provider: "bedrock"
+    model_id: "us.anthropic.claude-opus-4-5-20251101-v1:0"
+    temperature: 0.1
+    max_tokens: 2000
+    use_converse: false
+
+  - name: "evaluator_b"
+    display_name: "Model B"
+    provider: "bedrock"
+    model_id: "us.amazon.nova-premier-v1:0"
+    temperature: 0.1
+    max_tokens: 2000
+    use_converse: true
+
+  - name: "evaluator_c"
+    display_name: "Model C"
+    provider: "bedrock"
+    model_id: "openai.gpt-oss-20b-1:0"
+    temperature: 0.1
+    max_tokens: 2000
+    use_converse: true
+
+# Evaluation Engine Configuration (judge model for scoring)
+evaluation_engine:
+  provider: "bedrock"
+  model_id: "us.anthropic.claude-opus-4-6-v1"
+  display_name: "Claude Opus 4.6"
+  temperature: 0.1
+  max_tokens: 2000
+  use_converse: false
+
+# ── Dynamic Inference Lab ─────────────────────────────────────────────
+
+# Orchestrator — reads the user's workflow description and drives
+# the tool-use agent loop. Must support tool_use. Uses Anthropic SDK directly.
+orchestrator:
+  provider: "bedrock"
+  model_id: "us.anthropic.claude-opus-4-6-v1"
+  display_name: "Claude Opus 4.6 (Orchestrator)"
+  temperature: 0.1
+  max_tokens: 4096
+
+# Execution Model — The single model to be evaluated
+
+execution_model:
+  display_name: "Claude Opus 4.5"
+  provider: "bedrock"
+  model_id: "us.anthropic.claude-opus-4-5-20251101-v1:0"
+  temperature: 0.1
+  max_tokens: 2000
+  use_converse: false
+
+
+# Agent loop settings
+agent:
+  max_turns: 15
+  max_concurrent: 5

@@ -1,0 +1,29 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+keys.env
+config_template.py
+
+# Python
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.venv/
+
+# Node
+node_modules/
+
+# IDE / editor
+.claude/
+.idea/
+.vscode/
+*.swp
+*.swo
